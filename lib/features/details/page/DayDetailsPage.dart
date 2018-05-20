@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:worktime_flutter/features/details/view/EventList.dart';
 import 'package:worktime_flutter/redux/model/models.dart';
-import 'package:worktime_flutter/common/util/EventMapper.dart';
 
 class DayDetailsPage extends StatelessWidget {
   Day day;
@@ -100,22 +100,7 @@ class DayDetailsPage extends StatelessWidget {
               ),
             ),
           ),
-          new Expanded(
-            child: new Card(
-              child: new ListView(
-                  children: day.entries.map((entry) {
-                return new InkWell(
-                  onTap: () {},
-                  child: new ListTile(
-                    title: new Text('${mapEventToString(entry.event)}'),
-                    trailing: new Text('${dateFormatter
-                            .format(entry.dateTime)} ${timeFormatter.format(
-                            entry.timeOfDay)}'),
-                  ),
-                );
-              }).toList()),
-            ),
-          )
+          new EventList(day: day)
         ]),
       ),
     );

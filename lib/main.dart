@@ -3,7 +3,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_epics/redux_epics.dart';
 import 'package:worktime_flutter/features/addEditEvent/page/AddTimePage.dart';
-import 'package:worktime_flutter/presentation/HomePage.dart';
+import 'package:worktime_flutter/features/home/HomePage.dart';
 import 'package:worktime_flutter/redux/action/Actions.dart';
 import 'package:worktime_flutter/redux/middleware/Middleware.dart';
 import 'package:worktime_flutter/redux/model/models.dart';

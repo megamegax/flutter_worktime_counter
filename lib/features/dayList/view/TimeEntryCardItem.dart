@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:worktime_flutter/presentation/DayDetailsPage.dart';
+import 'package:worktime_flutter/features/details/page/DayDetailsPage.dart';
 import 'package:worktime_flutter/redux/model/models.dart';
 
 class TimeEntryCardItem extends StatelessWidget {
