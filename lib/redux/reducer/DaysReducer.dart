@@ -28,5 +28,6 @@ Map<String, Day> loadDays(Map<String, Day> days, DayEventsLoadedAction action) {
 
     days[key].entries.add(dayEvent);
   });
+
   return days;
 }

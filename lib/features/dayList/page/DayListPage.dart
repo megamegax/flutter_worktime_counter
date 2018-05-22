@@ -11,7 +11,7 @@ class DayListPage extends StatelessWidget {
     return new StoreConnector<AppState, _ViewModel>(
         converter: _ViewModel.fromStore,
         builder: (context, vm) {
-          return new DayListScreen(days: vm.store.state.days.values.toList());
+          return new DayListScreen(days: vm.store.state.days.values.toList().reversed.toList());
         });
   }
 }
