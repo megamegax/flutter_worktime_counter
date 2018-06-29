@@ -30,15 +30,18 @@ StatisticPageState loadQuote(
 StatisticPageState averageWorkTime(
     StatisticPageState stats, CalculateAverageWorkTimeAction action) {
   String calculatedAverageWorkTime = '00:00:00';
+  int currentMonth = DateTime.now().month;
   if (action.days.length > 0) {
+    final daysOfMonth =
+        action.days.where((day) => day.dateTime.month == currentMonth);
     final daysSumInMillis =
-        action.days.map((day) => day.inTime()).map((inTime) {
+        daysOfMonth.map((day) => day.inTime()).map((inTime) {
       DateTime time = timeFormatter.parse(inTime);
       return Duration(
               hours: time.hour, minutes: time.minute, seconds: time.second)
           .inMilliseconds;
     }).reduce((a, b) => a + b);
-    final averageInMillis = daysSumInMillis / action.days.length;
+    final averageInMillis = daysSumInMillis / daysOfMonth.length;
     final averageWorkTimeInMonth =
         new Duration(milliseconds: averageInMillis.round());
     calculatedAverageWorkTime =
