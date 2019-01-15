@@ -8,10 +8,8 @@ import 'package:worktime_flutter/redux/AppState.dart';
 import 'package:worktime_flutter/redux/action/Actions.dart';
 
 Stream<dynamic> signIn(Stream<dynamic> actions, EpicStore<AppState> store) {
-  return new Observable(actions).ofType(new TypeToken<LoginAction>()).asyncMap(
-      (action) => _handleSignIn()
-          .then((user) => new UserLoggedInAction(user: user))
-          .catchError((error) => new ErrorAction(message: error.toString())));
+  return new Observable(actions).ofType(new TypeToken<LoginAction>()).asyncMap((action) =>
+      _handleSignIn().then((user) => new UserLoggedInAction(user: user)).catchError((error) => new ErrorAction(message: error.toString())));
 }
 
 Future<FirebaseUser> _handleSignIn() async {
