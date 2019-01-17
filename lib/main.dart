@@ -29,8 +29,7 @@ class MyApp extends StatelessWidget {
     store = Store<AppState>(appReducer,
         initialState: AppState(
             days: new Map<String, Day>(),
-            addEditPageState:
-                new AddEditPageState(dateTime: new DateTime.now()),
+            addEditPageState: new AddEditPageState(dateTime: new DateTime.now()),
             statisticPageState: new StatisticPageState(
                 dailyWorkTime: '-',
                 monthlyWorkTime: '-',
