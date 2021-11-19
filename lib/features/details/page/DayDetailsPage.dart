@@ -39,13 +39,11 @@ class DayDetailsPage extends StatelessWidget {
                               new Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: new Row(children: [
-                                  new Hero(
-                                      tag: 'date_${day.dateTime.toString()}',
-                                      child: new Text(
-                                        dateFormatter.format(day.dateTime),
-                                        style: new TextStyle(
-                                            fontWeight: FontWeight.bold),
-                                      )),
+                                  new Text(
+                                    dateFormatter.format(day.dateTime),
+                                    style: new TextStyle(
+                                        fontWeight: FontWeight.bold),
+                                  ),
                                   new Expanded(
                                     child: new Container(),
                                   ),
@@ -56,14 +54,10 @@ class DayDetailsPage extends StatelessWidget {
                                         padding: const EdgeInsets.all(8.0),
                                         child: new Text('Benttöltött idő'),
                                       ),
-                                      new Hero(
-                                        tag: 'daily_hours_${day.dateTime
-                                            .toString()}',
-                                        child: new Text(
-                                          day.inTime(),
-                                          style: new TextStyle(
-                                              fontWeight: FontWeight.bold),
-                                        ),
+                                      new Text(
+                                        day.inTime(),
+                                        style: new TextStyle(
+                                            fontWeight: FontWeight.bold),
                                       ),
                                     ],
                                   ),

@@ -26,16 +26,12 @@ class TimeEntryCardItem extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: new Row(
                 children: [
-                  new Hero(
-                      tag: 'date_${day.dateTime.toString()}',
-                      child: new Text(
-                        dateFormatter.format(day.dateTime),
-                        style: new TextStyle(fontWeight: FontWeight.bold),
-                      )),
+                  new Text(
+                    dateFormatter.format(day.dateTime),
+                    style: new TextStyle(fontWeight: FontWeight.bold),
+                  ),
                   new Expanded(child: new Container()),
-                  new Hero(
-                      tag: 'daily_hours_${day.dateTime.toString()}',
-                      child: new Text(day.inTime())),
+                  new Text(day.inTime()),
                 ],
               ),
             ),

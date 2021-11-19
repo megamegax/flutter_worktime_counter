@@ -7,7 +7,6 @@ import 'package:worktime_flutter/redux/model/models.dart';
 import 'package:worktime_flutter/redux/action/Actions.dart';
 
 class HomePage extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return new DefaultTabController(
@@ -35,16 +34,13 @@ class HomePage extends StatelessWidget {
             ],
           ),
         ),
-        floatingActionButton: new Hero(
-          tag: 'floating_action_button',
-          child: new FloatingActionButton(
-            backgroundColor: Colors.green,
-            onPressed: () {
-              Navigator.pushNamed(context, Routes.addTime);
-            },
-            child: new Icon(Icons.add),
-            tooltip: "Add Time",
-          ),
+        floatingActionButton: new FloatingActionButton(
+          backgroundColor: Colors.green,
+          onPressed: () {
+            Navigator.pushNamed(context, Routes.addTime);
+          },
+          child: new Icon(Icons.add),
+          tooltip: "Add Time",
         ),
       ),
     );

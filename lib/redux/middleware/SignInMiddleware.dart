@@ -8,18 +8,21 @@ import 'package:worktime_flutter/redux/AppState.dart';
 import 'package:worktime_flutter/redux/action/Actions.dart';
 
 Stream<dynamic> signIn(Stream<dynamic> actions, EpicStore<AppState> store) {
-  return new Observable(actions).ofType(new TypeToken<LoginAction>()).asyncMap((action) =>
-      _handleSignIn().then((user) => new UserLoggedInAction(user: user)).catchError((error) => new ErrorAction(message: error.toString())));
+  return new Stream.value(actions)
+      .where((event) => event is LoginAction)
+      .asyncMap((action) => _handleSignIn()
+          .then((user) => new UserLoggedInAction(user: user))
+          .catchError((error) => new ErrorAction(message: error.toString())));
 }
 
-Future<FirebaseUser> _handleSignIn() async {
+Future<User> _handleSignIn() async {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = new GoogleSignIn();
   GoogleSignInAccount googleUser = await _googleSignIn.signIn();
   GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-  FirebaseUser user = await _auth.signInWithGoogle(
-    accessToken: googleAuth.accessToken,
-    idToken: googleAuth.idToken,
-  );
-  return user;
+  final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
+  UserCredential user = (await _auth.signInWithCredential(credential));
+
+  return user.user;
 }

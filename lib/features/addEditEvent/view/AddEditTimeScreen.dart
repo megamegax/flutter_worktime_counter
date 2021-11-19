@@ -68,10 +68,11 @@ class AddEditTimeScreen extends StatelessWidget {
                               icon: new Icon(Icons.calendar_today),
                               onPressed: () {
                                 showDatePicker(
-                                    context: context,
-                                    initialDate: new DateTime.now(),
-                                    firstDate: new DateTime(2017),
-                                    lastDate: new DateTime(2020)).then((date) {
+                                        context: context,
+                                        initialDate: new DateTime.now(),
+                                        firstDate: new DateTime(2017),
+                                        lastDate: new DateTime(2020))
+                                    .then((date) {
                                   showTimePicker(
                                           context: context,
                                           initialTime: new TimeOfDay.now())
@@ -110,22 +111,19 @@ class AddEditTimeScreen extends StatelessWidget {
           ),
         ),
       ),
-      floatingActionButton: new Hero(
-        tag: 'floating_action_button',
-        child: new FloatingActionButton(
-          backgroundColor: Colors.green,
-          onPressed: () {
-            final date = new DateTime(
-                state.dateTime.year, state.dateTime.month, state.dateTime.day);
-            onSave(new DayEvent(
-                event: mapStringToEvent(state.selectedEvent),
-                description: state.description,
-                dateTime: date,
-                timeOfDay: DateTime(0, 0, 0, state.dateTime.hour,
-                    state.dateTime.minute, state.dateTime.second)));
-          },
-          child: new Icon(Icons.add),
-        ),
+      floatingActionButton: new FloatingActionButton(
+        backgroundColor: Colors.green,
+        onPressed: () {
+          final date = new DateTime(
+              state.dateTime.year, state.dateTime.month, state.dateTime.day);
+          onSave(new DayEvent(
+              event: mapStringToEvent(state.selectedEvent),
+              description: state.description,
+              dateTime: date,
+              timeOfDay: DateTime(0, 0, 0, state.dateTime.hour,
+                  state.dateTime.minute, state.dateTime.second)));
+        },
+        child: new Icon(Icons.add),
       ),
     );
   }

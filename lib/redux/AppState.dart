@@ -5,7 +5,7 @@ import 'model/models.dart';
 
 @immutable
 class AppState {
-  final FirebaseUser user;
+  final User user;
   final Map<String, Day> days;
   final AddEditPageState addEditPageState;
   final StatisticPageState statisticPageState;
@@ -17,7 +17,7 @@ class AppState {
       {List<Day> days,
       AddEditPageState addEditPageState,
       StatisticPageState statisticPageState,
-      FirebaseUser user}) {
+      User user}) {
     return AppState(
         days: days ?? this.days,
         addEditPageState: addEditPageState ?? this.addEditPageState,

@@ -2,9 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:redux/redux.dart';
 import 'package:worktime_flutter/redux/action/Actions.dart';
 
-final userReducer = combineReducers<FirebaseUser>(
-    [new TypedReducer<FirebaseUser, UserLoggedInAction>(userLoggedIn)]);
+final userReducer = combineReducers<User>(
+    [new TypedReducer<User, UserLoggedInAction>(userLoggedIn)]);
 
-FirebaseUser userLoggedIn(FirebaseUser oldUser, UserLoggedInAction action) {
+User userLoggedIn(User oldUser, UserLoggedInAction action) {
   return action.user;
 }

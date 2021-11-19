@@ -24,7 +24,7 @@ class CalculateDailyWorkTimeAction {
 class LoginAction {}
 
 class UserLoggedInAction {
-  FirebaseUser user;
+  User user;
 
   UserLoggedInAction({this.user});
 }

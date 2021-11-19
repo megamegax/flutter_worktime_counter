@@ -16,12 +16,12 @@ class DayEvent {
   factory DayEvent.fromFireStore(DocumentSnapshot response) {
     var dateFormatter = new DateFormat('yyyy-MM-dd');
     var timeFormatter = new DateFormat('HH:mm:ss');
+    final data = response.data() as Map<String, dynamic>;
     return new DayEvent(
-        event: Event.values
-            .firstWhere((e) => e.toString() == response.data['event']),
-        description: response.data['description'],
-        dateTime: dateFormatter.parse(response.data['dateTime']),
-        timeOfDay: timeFormatter.parse(response.data['timeOfDay']));
+        event: Event.values.firstWhere((e) => e.toString() == data['event']),
+        description: data["description"],
+        dateTime: dateFormatter.parse(data['dateTime']),
+        timeOfDay: timeFormatter.parse(data['timeOfDay']));
   }
 
   toMap() {
